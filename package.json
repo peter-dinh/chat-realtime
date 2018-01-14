@@ -1,0 +1,15 @@
+{
+  "name": "room_chat",
+  "version": "1.0.0",
+  "description": "web realtime",
+  "main": "index.js",
+  "author": "Peter Dinh",
+  "license": "MIT",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "mongodb": "^3.0.1",
+    "socket.io": "^2.0.4"
+  }
+}
