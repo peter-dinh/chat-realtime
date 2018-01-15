@@ -5,7 +5,8 @@ const assert = require('assert');
 const url = 'mongodb://localhost:27017';
 
 // Database Name
-const dbName = 'mydb';
+const dbName = 'appchat';
+
 
 // Use connect method to connect to the server
 MongoClient.connect(url, function(err, client) {
@@ -13,6 +14,21 @@ MongoClient.connect(url, function(err, client) {
   console.log("Connected successfully to server");
 
   const db = client.db(dbName);
-
-  client.close();
+  createCapped(db, function(){
+    client.close();
+  });
 });
+
+function createCapped(db, callback){
+    db.createCollection("abc", {"capped": true, "size": 100000, "max": 5000}, 
+    function(err, results){
+      if (err)
+      {
+        throw err;
+      }
+        console.log("Collection created!");
+        callback();
+    });
+};
+
+
